@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                template="./WEB-INF/template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <!-- intro -->
+        <div class="utf-intro green darken-1 z-depth-1">
+            <h1 class="grey-text text-lighten-5">Natal dos Sonhos</h1>
+            <h:graphicImage library="img" name="utfpr.png" class="responsive-img utf-brand"/>
+        </div>
+        <!-- intro -->   
+        
+        <!-- aviso de vazio -->
+        <div class="row" jsf:rendered="#{!letterBean.hasElements()}">
+            <div class="col s12 center-align">
+                <i class="fa fa-5x fa-frown-o"></i>
+                <h5 class="utf-info">Não há cartas!</h5>
+            </div>
+        </div>
+        <!-- aviso de vazio -->
+        
+        <!-- cartas -->        
+        <div class="row" jsf:rendered="#{letterBean.hasElements()}">            
+            <ui:repeat var="item" value="#{letterBean.letterList}">
+                <div class="col s12 m4 l3">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="//placehold.it/800x450/004C00/000000"/>
+                            <span class="card-title">#{item.title}</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="progress">
+                                <div class="determinate" style="width: #{letterBean.letter.product.calculatePercentage()}%"></div>
+                            </div>
+                            <p>#{letterBean.letter.child.name}</p>
+                        </div>
+                        <div class="card-action">
+                            <p:commandLink class="green darken-5 waves-effect waves-light btn">Contribua</p:commandLink>                        
+                        </div>
+
+                    </div>                
+                </div>  
+            </ui:repeat>
+        </div>
+
+        <!-- cartas -->
+
+    </ui:define>
+
+</ui:composition>
