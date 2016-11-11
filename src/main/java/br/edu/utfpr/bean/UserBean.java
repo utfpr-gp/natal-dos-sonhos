@@ -24,10 +24,6 @@ public class UserBean {
     public UserBean() {
     }
     
-    public void showMessage(String resume, String detail, FacesMessage.Severity type){
-        FacesContext context = FacesContext.getCurrentInstance();
-        FacesMessage facesMessage = new FacesMessage(type, resume, detail);
-        context.addMessage(null, facesMessage);        
-    }
+    
     
 }

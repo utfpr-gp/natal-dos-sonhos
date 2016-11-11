@@ -5,10 +5,10 @@
  */
 package br.edu.utfpr.bean;
 
-import br.edu.utfpr.bean.placeholder.Child;
-import br.edu.utfpr.bean.placeholder.Letter;
-import br.edu.utfpr.bean.placeholder.Product;
-import br.edu.utfpr.bean.placeholder.School;
+import br.edu.utfpr.model.Child;
+import br.edu.utfpr.model.Letter;
+import br.edu.utfpr.model.Product;
+import br.edu.utfpr.model.School;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,17 +36,17 @@ public class LetterBean {
     
     @PostConstruct
     public void init(){
-        letter = new Letter("Meu Sonho é ter uma bicicleta", null);
+        letter = new Letter("Meu Sonho é ter uma bicicleta");
         School school = new School("Escola Estadual Monsenhor Pedro Busko", "Rua XV de Novembro - Guarapuava - PR", "João da Silva");
         Child child = new Child("Joãozinho", new Date(), school);
         letter.setChild(child); 
-        Product product = new Product("Bicicleta", 20000, 10000);
+        Product product = new Product("Bicicleta");
         letter.setProduct(product);
         
         letterList = new ArrayList<>();
-        letterList.add(letter);
-        letterList.add(letter);
-        letterList.add(letter);
+        //letterList.add(letter);
+        //letterList.add(letter);
+        //letterList.add(letter);
                 
     }   
 

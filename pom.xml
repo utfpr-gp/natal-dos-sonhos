@@ -59,6 +59,14 @@
             <version>6.0</version>
         </dependency>
         
+        <!-- Implementacao do Bean Validation -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.1.3.Final</version>
+            <scope>compile</scope>
+        </dependency>
+        
         <!-- https://mvnrepository.com/artifact/org.primefaces.themes/south-street -->
         <dependency>
             <groupId>org.primefaces.themes</groupId>
