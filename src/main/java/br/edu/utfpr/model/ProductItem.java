@@ -5,10 +5,12 @@
  */
 package br.edu.utfpr.model;
 
+import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -18,40 +20,41 @@ import javax.persistence.Table;
  * @author Roni
  */
 @Entity(name = "product_items")
+@Table(name = "product_items")
 public class ProductItem {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     
-    private long price;
+    private BigDecimal price;
     
-    @OneToOne
+    @ManyToOne
     private Product product;
     /*
      *     
      * Quantidade arrecadada
      *
      */
-    private float raised;
+    private BigDecimal raised;
 
     public long getId() {
         return id;
     }
         
-    public long getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public float getRaised() {
+    public BigDecimal getRaised() {
         return raised;
     }
 
-    public void setRaised(float raised) {
+    public void setRaised(BigDecimal raised) {
         this.raised = raised;
     } 
 
@@ -72,7 +75,7 @@ public class ProductItem {
      * @return 
      */
     public float calculatePercentage(){
-        return raised/price * 100;
+        return raised.divide(price).multiply(new BigDecimal(100)).floatValue();
     }
     
 }

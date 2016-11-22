@@ -6,6 +6,7 @@
 package br.edu.utfpr.model;
 
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,12 +14,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * Item de produto objetivo de uma carta.
  * @author Roni
  */
 @Entity(name = "products")
+@Table(name="products")
 public class Product {
     
     @Id
@@ -27,12 +30,11 @@ public class Product {
     
     @OneToMany
     @Column(name = "item_id")
-    private List<ProductItem> productItems;
+    private Set<ProductItem> productItems;
     
     private String name;
-    
-    //@Lob
-    private byte[] image;
+        
+    private String image;
       
 
     public Product() {
@@ -50,13 +52,34 @@ public class Product {
         this.name = name;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<ProductItem> getProductItems() {
+        return productItems;
+    }
+
+    public void setProductItems(Set<ProductItem> productItems) {
+        this.productItems = productItems;
+    }
+    
+    
+    
+    
+    
     
     
 

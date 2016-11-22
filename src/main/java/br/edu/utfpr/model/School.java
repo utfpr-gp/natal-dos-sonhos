@@ -5,11 +5,24 @@
  */
 package br.edu.utfpr.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author Roni
  */
+@Entity
+@Table(name = "school")
 public class School {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
     private String name;
     private String address;
     private String professorName;

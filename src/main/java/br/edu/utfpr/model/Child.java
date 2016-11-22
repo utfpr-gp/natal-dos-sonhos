@@ -6,14 +6,29 @@
 package br.edu.utfpr.model;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Roni
  */
+@Entity
+@Table(name = "child")
 public class Child {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
     private String name;
     private Date birthday;
+    
+    @ManyToOne
     private School school;
 
     public Child() {
@@ -25,8 +40,6 @@ public class Child {
         this.school = school;
     }
     
-    
-
     public String getName() {
         return name;
     }
@@ -49,6 +62,14 @@ public class Child {
 
     public void setSchool(School school) {
         this.school = school;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
     

@@ -5,32 +5,49 @@
  */
 package br.edu.utfpr.model;
 
+import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * Escola originária de uma carta.
  * @author Roni
  */
-
+@Entity
+@Table(name = "letters")
 public class Letter {
   
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
     private String title;
+        
+    private String image;
     
-    //@Lob
-    private byte[] image;
-    private Child child;    
-    private Product product;
+    @OneToOne
+    private Child child; 
+    
+    @OneToMany
+    private Set<Donation> donations;    
+    
+    @OneToOne    
+    private ProductItem productItem;
 
     public Letter() {
     }
 
-    public Letter(String title) {
-        this.title = title;               
+    public Letter(String title, String imageUrl) {
+        this.title = title;              
+        this.image = imageUrl;
     }   
 
     public String getTitle() {
@@ -41,11 +58,11 @@ public class Letter {
         this.title = title;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -57,11 +74,27 @@ public class Letter {
         this.child = child;
     }
 
-    public Product getProduct() {
-        return product;
+    public Long getId() {
+        return id;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }    
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public ProductItem getProductItem() {
+        return productItem;
+    }
+
+    public void setProductItem(ProductItem productItem) {
+        this.productItem = productItem;
+    }
+
+    public Set<Donation> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(Set<Donation> donations) {
+        this.donations = donations;
+    }
 }

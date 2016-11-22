@@ -8,7 +8,9 @@ package br.edu.utfpr.bean;
 import br.edu.utfpr.model.Child;
 import br.edu.utfpr.model.Letter;
 import br.edu.utfpr.model.Product;
+import br.edu.utfpr.model.ProductItem;
 import br.edu.utfpr.model.School;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,17 +38,23 @@ public class LetterBean {
     
     @PostConstruct
     public void init(){
-        letter = new Letter("Meu Sonho é ter uma bicicleta");
+        letter = new Letter("Meu Sonho é ter uma bicicleta", null);
         School school = new School("Escola Estadual Monsenhor Pedro Busko", "Rua XV de Novembro - Guarapuava - PR", "João da Silva");
         Child child = new Child("Joãozinho", new Date(), school);
         letter.setChild(child); 
         Product product = new Product("Bicicleta");
-        letter.setProduct(product);
+        
+        ProductItem productItem = new ProductItem();
+        productItem.setProduct(product); 
+        productItem.setPrice(new BigDecimal(200.00));
+        productItem.setRaised(new BigDecimal(110.00));
+        
+        letter.setProductItem(productItem);
         
         letterList = new ArrayList<>();
-        //letterList.add(letter);
-        //letterList.add(letter);
-        //letterList.add(letter);
+        letterList.add(letter);
+        letterList.add(letter);
+        letterList.add(letter);
                 
     }   
 

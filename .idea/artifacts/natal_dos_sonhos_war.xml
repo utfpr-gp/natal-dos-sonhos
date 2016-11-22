@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="natal-dos-sonhos:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="natal-dos-sonhos.war">
+      <element id="artifact" artifact-name="natal-dos-sonhos:war exploded" />
+    </root>
+  </artifact>
+</component>
