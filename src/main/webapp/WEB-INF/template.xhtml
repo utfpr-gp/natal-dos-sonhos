@@ -23,7 +23,7 @@
         <!--
         <link rel="stylesheet" href="resources/css/template.css"></link>
         -->
-                
+
         <h:outputStylesheet library="css" name="template.css"></h:outputStylesheet>
 
         <title>Natal dos Sonhos - UTFPR - Guarapuava</title>
@@ -106,7 +106,9 @@
         </footer>
         <!-- rodapé -->
 
-        <script src="resources/node_modules/jquery/dist/jquery.min.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-2.2.4.js"></script>-->
+        <!-- Para evitar conflito com o jQuery, é preciso referenciar a própria versão do jQuery que vem no PrimeFaces -->
+        <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
         <script src="resources/node_modules/materialize-css/bin/materialize.js"></script>
         <script src="resources/js/common.js"></script>
     </h:body>
