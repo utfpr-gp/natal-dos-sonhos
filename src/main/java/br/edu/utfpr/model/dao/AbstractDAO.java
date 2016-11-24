@@ -66,7 +66,8 @@ public class AbstractDAO<PK, T> {
 
     public void delete(T entity) {
         this.entityManager = JPAUtil.getEntityManager();
-        entityManager.remove(entity);
+        //verifica se a entidade está gerenciada, se não estiver, recupera ela do BD
+        entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));         
     }
 
     public List<T> findAll() {

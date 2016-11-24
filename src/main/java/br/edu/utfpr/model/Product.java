@@ -20,7 +20,7 @@ import javax.persistence.Table;
  * Item de produto objetivo de uma carta.
  * @author Roni
  */
-@Entity(name = "products")
+@Entity
 @Table(name="products")
 public class Product {
     
@@ -28,11 +28,12 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @OneToMany
-    @Column(name = "item_id")
+    @OneToMany    
     private Set<ProductItem> productItems;
     
     private String name;
+    
+    private String description;
         
     private String image;
       
@@ -42,7 +43,15 @@ public class Product {
 
     public Product(String name) {
         this.name = name;        
-    }    
+    }   
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }   
 
     public String getName() {
         return name;

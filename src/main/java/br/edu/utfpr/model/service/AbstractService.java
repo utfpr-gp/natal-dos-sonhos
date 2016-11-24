@@ -9,45 +9,49 @@ public class AbstractService<PK, T> {
     protected AbstractDAO<PK, T> dao;
 
     public boolean save(T entity) {
+        boolean isSuccess = true;
         try {
             JPAUtil.beginTransaction();
             dao.save(entity);
             JPAUtil.commit();            
         } catch (Exception e) {
             JPAUtil.rollBack();
-            return false;
+            isSuccess = false;
         } finally {
             JPAUtil.closeEntityManager();
         }
-        return true;
+        return isSuccess;
     }
 
     public boolean update(T entity) {
+        boolean isSuccess = true;
         try {
             JPAUtil.beginTransaction();
             dao.update(entity);
             JPAUtil.commit();
         } catch (Exception e) {
             JPAUtil.rollBack();
-            return false;
+            isSuccess = false;
         } finally {
             JPAUtil.closeEntityManager();
         }
-        return true;
+        return isSuccess;
     }
 
     public boolean delete(T entity) {
+        boolean isSuccess = true;
         try {
             JPAUtil.beginTransaction();
             dao.delete(entity);
             JPAUtil.commit();
         } catch (Exception e) {
             JPAUtil.rollBack();
-            return false;
+            isSuccess = false;
+            e.printStackTrace();
         } finally {
             JPAUtil.closeEntityManager();            
         }
-        return true;
+        return isSuccess;
     }
 
     public T getById(PK pk) {
@@ -73,8 +77,7 @@ public class AbstractService<PK, T> {
             entity = dao.getByProperty(propertyName, propertyValue);
             JPAUtil.commit();
         } catch (Exception e) {
-            JPAUtil.rollBack();
-            e.printStackTrace();
+            JPAUtil.rollBack();            
         } finally {
             JPAUtil.closeEntityManager();
         }

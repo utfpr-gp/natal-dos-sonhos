@@ -12,10 +12,49 @@
 
         <h1>Cadastrar Produto</h1>
 
-        <h:form>            
-            <input jsf:value="#{productBean.product.name}" type="text"></input>
-            <button jsf:action="#{productBean.doAction()}" class="waves-effect waves-light btn" type="submit">Enviar</button>                                     
+        <h:form> 
+            <div class="input-field col s12">
+                <label class="active">Nome do Produto</label>
+                <input jsf:value="#{productBean.product.name}" type="text"></input>                
+            </div>           
+            <div class="input-field col s12">
+                <label>Descrição</label>
+                <input  jsf:value="#{productBean.product.description}" type="text"></input>                
+            </div>           
+            <button jsf:action="#{productBean.persist()}" class="waves-effect waves-light btn" type="submit">Salvar</button> 
+
+            <div class="row">
+                <div class="col s12">
+                    <p:dataTable var="product" value="#{productBean.products}" paginator="true" rows="3">
+                        <p:column headerText="Id" priority="4">
+                            <h:outputText value="#{product.id}" />
+                        </p:column>
+
+                        <p:column headerText="Nome">
+                            <h:outputText value="#{product.name}" />
+                        </p:column>
+
+                        <p:column headerText="Descrição" priority="3">
+                            <h:outputText value="#{product.description}" />
+                        </p:column>
+
+                        <p:column>
+                            <div class="row center">
+                                <button jsf:action="#{productBean.edit(product)}" type="submit" class="waves-effect waves-light btn blue lighten-2">
+                                    <i class="material-icons">create</i>
+                                </button>
+                                <button jsf:action="#{productBean.delete(product)}" type="submit" class="waves-effect waves-light btn red">
+                                    <i class="material-icons">delete_forever</i>
+                                </button>
+                            </div>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </div>
         </h:form>
+
+
+
         <h:outputText value="#{productBean.product.name}"></h:outputText>
     </ui:define>
 

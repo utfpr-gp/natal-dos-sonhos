@@ -19,7 +19,7 @@ import javax.persistence.Table;
  *
  * @author Roni
  */
-@Entity(name = "product_items")
+@Entity
 @Table(name = "product_items")
 public class ProductItem {
     
