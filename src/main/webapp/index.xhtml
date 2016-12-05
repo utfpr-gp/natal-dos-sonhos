@@ -4,7 +4,8 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:jsf="http://xmlns.jcp.org/jsf"
                 template="./WEB-INF/template.xhtml"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
         <!-- intro -->
@@ -28,18 +29,29 @@
             <ui:repeat var="item" value="#{letterBean.letterList}">
                 <div class="col s12 m4 l3">
                     <div class="card">
+                        <span class="card-title">#{item.title}</span>
                         <div class="card-image">
-                            <img src="//placehold.it/800x450/004C00/000000"/>
                             <span class="card-title">#{item.title}</span>
+                            <h:graphicImage library="img" name="image.png"/>
                         </div>
                         <div class="card-content">
                             <div class="progress">
                                 <div class="determinate" style="width: #{letterBean.letter.productItem.calculatePercentage()}%"></div>
                             </div>
-                            <p>#{letterBean.letter.child.name}</p>
+                            <p>Apelino: #{letterBean.letter.child.name}</p>
+                            <p>Preço:
+                            <h:outputFormat value="#{letterBean.letter.productItem.price}" >
+                                <f:convertNumber type="currency" currencySymbol="R$"></f:convertNumber>
+                            </h:outputFormat>
+                            </p>
+                            <p>Arrecadado:
+                            <h:outputFormat value="#{letterBean.letter.productItem.raised}" >
+                                <f:convertNumber type="currency" currencySymbol="R$"></f:convertNumber>
+                            </h:outputFormat>
+                            </p>
                         </div>
                         <div class="card-action">
-                            <p:commandLink class="green darken-5 waves-effect waves-light btn">Contribua</p:commandLink>                        
+                            <p:commandLink action="letter-details.xhtml" class="green darken-5 waves-effect waves-light btn">CONTRIBUA</p:commandLink>                        
                         </div>
 
                     </div>                
