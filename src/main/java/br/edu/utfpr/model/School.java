@@ -60,6 +60,13 @@ public class School {
 
     public void setProfessorName(String professorName) {
         this.professorName = professorName;
-    }  
-    
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

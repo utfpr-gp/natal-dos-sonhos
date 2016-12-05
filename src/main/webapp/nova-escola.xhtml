@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"                
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <p:messages></p:messages>
+
+        <h1>Cadastrar Escola</h1>
+
+        <h:form> 
+            <div class="input-field col s12">
+                <label class="active">Nome da Escola</label>
+                <input jsf:value="#{schoolBean.school.name}" type="text"></input>
+            </div>           
+            <div class="input-field col s12">
+                <label>Endereço</label>
+                <input  jsf:value="#{schoolBean.school.address}" type="text"></input>
+            </div>
+            <div class="input-field col s12">
+                <label>Nome do Professor</label>
+                <input  jsf:value="#{schoolBean.school.professorName}" type="text"></input>
+            </div>
+            <button jsf:action="#{schoolBean.persist}" class="waves-effect waves-light btn" type="submit">Salvar</button>
+
+            <div class="row">
+                <div class="col s12">
+                    <p:dataTable var="school" value="#{schoolBean.schoolList}" paginator="true" rows="3">
+                        <p:column headerText="Id" priority="4">
+                            <h:outputText value="#{school.id}" />
+                        </p:column>
+
+                        <p:column headerText="Nome">
+                            <h:outputText value="#{school.name}" />
+                        </p:column>
+
+                        <p:column headerText="Endereço" priority="3">
+                            <h:outputText value="#{school.address}" />
+                        </p:column>
+
+                        <p:column headerText="Professor" priority="4">
+                            <h:outputText value="#{school.professorName}" />
+                        </p:column>
+
+                        <p:column>
+                            <div class="row center">
+                                <button jsf:action="#{schoolBean.edit(school)}" type="submit" class="waves-effect waves-light btn blue lighten-2">
+                                    <i class="material-icons">create</i>
+                                </button>
+                                <button jsf:action="#{schoolBean.delete(school)}" type="submit" class="waves-effect waves-light btn red">
+                                    <i class="material-icons">delete_forever</i>
+                                </button>
+                            </div>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
