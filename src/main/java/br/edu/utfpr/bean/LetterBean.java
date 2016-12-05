@@ -5,13 +5,17 @@
  */
 package br.edu.utfpr.bean;
 
+import br.edu.utfpr.model.Child;
 import br.edu.utfpr.model.Letter;
 import br.edu.utfpr.model.Letter;
 import br.edu.utfpr.model.Product;
 import br.edu.utfpr.model.ProductItem;
 import br.edu.utfpr.model.School;
+import br.edu.utfpr.model.service.ChildService;
 import br.edu.utfpr.model.service.LetterService;
 import br.edu.utfpr.model.service.LetterService;
+import br.edu.utfpr.model.service.ProductItemService;
+import br.edu.utfpr.model.service.ProductService;
 import br.edu.utfpr.util.MessageUtil;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -36,7 +40,7 @@ public class LetterBean {
     private LetterService service;
 
     @OneToOne
-    private Long letterId;
+    private Long childId;
     private Long productItemId;
 
     /**
@@ -85,12 +89,12 @@ public class LetterBean {
         this.service = service;
     }
 
-    public Long getLetterId() {
-        return letterId;
+    public Long getChildId() {
+        return childId;
     }
 
-    public void setLetterId(Long letterId) {
-        this.letterId = letterId;
+    public void setChildId(Long childId) {
+        this.childId = childId;
     }
 
     public Long getProductItemId() {
@@ -100,10 +104,16 @@ public class LetterBean {
     public void setProductItemId(Long productItemId) {
         this.productItemId = productItemId;
     }
-    
+
     public void persist() {
 
         if (letter.getId() == null) {
+            ChildService c = new ChildService();
+            Child child = c.getById(childId);
+            letter.setChild(child);
+            ProductItemService p = new ProductItemService();
+            ProductItem productItem = p.getById(productItemId);
+            letter.setProductItem(productItem);
             boolean isSucess = service.save(letter);
 
             if (isSucess) {
