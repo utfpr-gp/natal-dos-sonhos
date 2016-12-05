@@ -29,9 +29,11 @@
                                 <br></br><br></br>      
                                 <p:graphicImage url="https://inomics.com/sites/default/files/pictures/picture-95970-1460131169.png" width="110px" height="110px" />
                                 <br></br>
-                                <h:outputText value="Nome: Jaiminho#{childBean.child.name}" /> 
+                                Nome: Jaiminho
+                               <!--> <h:outputText value="#/*{letterBean.letter.child.name}" /> -->
                                 <br></br>
-                                <h:outputText value="Idade: 12#{childBean.child.age} anos" /> 
+                                Idade: 12
+                               <!-- <h:outputText value="#/*{letterBean.letter.child.age} anos" /> -->
                             </center>
                         </div>
 
@@ -65,14 +67,14 @@
                             <center>      
                                 <p:graphicImage url="http://g04.a.alicdn.com/kf/HTB1qbsHHFXXXXbiXVXXq6xXFXXXS/Dragon-ball-z-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%8D%D1%82%D0%BA%D0%B8-%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%BA%D0%B8-%D0%B2%D0%B5%D0%B3%D0%B5%D1%82%D0%B0-%D0%B3%D0%BE%D0%BA%D1%83-%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%BA%D1%83-dbz-%D0%BF%D0%B8%D0%BA%D0%BA%D0%BE%D0%BB%D0%BE-banpresto-%D0%B4%D1%80%D0%B0%D0%BA%D0%BE%D0%BD%D0%B8%D0%B9-%D0%B6%D0%B5%D0%BC%D1%87%D1%83%D0%B3-bonecos-%D0%B4%D0%B6%D0%BE%D0%BA%D0%B5%D1%80-%D1%81%D1%83%D0%BF%D0%B5%D1%80%D0%B3%D0%B5%D1%80%D0%BE%D0%B9.jpg" width="380px" height="380px" />
                                 <br></br><br></br>
-                                Preço: R$<h:outputText value="45,90 #{productBean.product.productItems}" />
-                                <br></br><h:outputText value="#{productBean.product.productItems}" />
-                                Valor arreacadado: R$<h:outputText value="22,90#{productBean.product.productItems}" />
+                                Preço: R$45,90<!--<h:outputText value="#/*{letterBean.letter.productItem.price}" />-->
+                                <br></br>
+                                Valor arreacadado: R$22,90<!--<h:outputText value="#/*{letterBean.letter.productItem.raised}" />-->
                                 <p:progressBar value="59" labelTemplate="{value}%" displayOnly="true" id="progressBarClient" widgetVar="pbClient" style="width:400px"/>
                                 <br></br>
                                 <h:form>
                                 <div class="row">
-                                    <h:commandLink  action="#{donationBean.persist()}" class="green darken-5 waves-effect waves-light btn" value="Contribua"></h:commandLink>
+                                    <h:commandLink  action="#{letterBean.letter.donations}" class="green darken-5 waves-effect waves-light btn" value="Contribua"></h:commandLink>
                                 </div> 
                                 </h:form>
                                 <!--<p:button  value="Contribua" icon="fa fa-dollar">
