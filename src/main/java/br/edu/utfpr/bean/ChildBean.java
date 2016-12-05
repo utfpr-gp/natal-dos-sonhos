@@ -6,13 +6,16 @@
 package br.edu.utfpr.bean;
 
 import br.edu.utfpr.model.Child;
+import br.edu.utfpr.model.School;
 import br.edu.utfpr.model.service.ChildService;
+import br.edu.utfpr.model.service.SchoolService;
 import br.edu.utfpr.util.MessageUtil;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -25,6 +28,9 @@ public class ChildBean {
     private List<Child> childs;
     private Child child;
     ChildService service;
+    
+    @ManyToOne
+    private Long schoolId;
 
     public ChildBean() {
 
@@ -62,9 +68,20 @@ public class ChildBean {
         this.service = service;
     }
 
+    public Long getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(Long schoolId) {
+        this.schoolId = schoolId;
+    }
+
     public void persist() {
 
         if (child.getId() == null) {
+            SchoolService s = new SchoolService();
+            School school = s.getById(schoolId);
+            child.setSchool(school);
             boolean isSucess = service.save(child);
 
             if (isSucess) {
