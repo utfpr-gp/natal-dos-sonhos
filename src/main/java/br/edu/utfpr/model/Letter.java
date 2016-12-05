@@ -45,9 +45,10 @@ public class Letter {
     public Letter() {
     }
 
-    public Letter(String title, String imageUrl) {
+    public Letter(String title, String imageUrl, Child child) {
         this.title = title;              
         this.image = imageUrl;
+        this.child = child;
     }   
 
     public String getTitle() {

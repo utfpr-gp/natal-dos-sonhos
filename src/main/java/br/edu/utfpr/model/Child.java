@@ -20,26 +20,28 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "child")
 public class Child {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String name;
     private Date birthday;
-    
+    private Boolean isMale;
+
     @ManyToOne
     private School school;
 
     public Child() {
     }
 
-    public Child(String name, Date birthday, School school) {
+    public Child(String name, Date birthday, School school, Boolean isMale) {
         this.name = name;
         this.birthday = birthday;
         this.school = school;
+        this.isMale = isMale;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -71,7 +73,13 @@ public class Child {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    
-    
+
+    public Boolean getIsMale() {
+        return isMale;
+    }
+
+    public void setIsMale(Boolean isMale) {
+        this.isMale = isMale;
+    }
+
 }
