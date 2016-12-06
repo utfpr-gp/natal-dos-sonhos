@@ -25,6 +25,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.OneToOne;
 
 /**
@@ -32,7 +33,7 @@ import javax.persistence.OneToOne;
  * @author Roni
  */
 @ManagedBean
-@ApplicationScoped
+@SessionScoped
 public class LetterBean {
 
     private Letter letter;
