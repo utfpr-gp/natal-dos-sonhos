@@ -156,7 +156,7 @@ public class LetterBean {
     }
     
     public List<Letter> findAll(){
-        return service.findAll();
+        return letterList = service.findAll();
     }
 
 }

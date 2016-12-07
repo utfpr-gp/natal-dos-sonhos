@@ -26,7 +26,7 @@
         
         <!-- cartas -->        
         <div class="row" jsf:rendered="#{letterBean.hasElements()}">            
-            <ui:repeat var="item" value="#{letterBean.letterList}">
+            <ui:repeat var="item" value="#{letterBean.findAll()}">
                 <div class="col s12 m4 l3">
                     <div class="card">
                         <span class="card-title">#{item.title}</span>
@@ -45,13 +45,13 @@
                             </h:outputFormat>
                             </p>
                             <p>Arrecadado:
-                            <h:outputFormat value="#{letterBean.letter.productItem.raised}" >
+                            <h:outputFormat value="#{item.productItem.raised}" >
                                 <f:convertNumber type="currency" currencySymbol="R$"></f:convertNumber>
                             </h:outputFormat>
                             </p>
                         </div>
                         <div class="card-action">
-                       <p:commandLink action="letter-details.xhtml" class="green darken-5 waves-effect waves-light btn">CONTRIBUA</p:commandLink>                     
+                       <p:commandLink action="letter-details" class="green darken-5 waves-effect waves-light btn">CONTRIBUA</p:commandLink>                     
                         </div>
 
                     </div>                
