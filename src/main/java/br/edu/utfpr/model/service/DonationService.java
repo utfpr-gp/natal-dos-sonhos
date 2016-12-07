@@ -7,6 +7,7 @@ package br.edu.utfpr.model.service;
 
 import br.edu.utfpr.model.Donation;
 import br.edu.utfpr.model.dao.DonationDAO;
+import java.util.List;
 
 /**
  *
@@ -16,5 +17,10 @@ public class DonationService extends AbstractService<Long, Donation>{
     
     public DonationService() {
         dao = new DonationDAO();
+    }
+    
+        
+    public List<Donation> findAllPendingPayment(){
+        return ((DonationDAO)dao).findAllPendingPayment();
     }
 }

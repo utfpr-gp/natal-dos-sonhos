@@ -76,13 +76,9 @@ public class AbstractDAO<PK, T> {
                 .getResultList();
     }
 
-    public List<T> findAllPendingPayment() {
-        this.entityManager = JPAUtil.getEntityManager();
-        return entityManager.createQuery(("FROM " + getTypeClass().getName() + " WHERE isPayed = false"))
-                .getResultList();
-    }
 
-    private Class<?> getTypeClass() {
+
+    protected Class<?> getTypeClass() {
         Class<?> clazz = (Class<?>) ((ParameterizedType) this.getClass().
                 getGenericSuperclass()).getActualTypeArguments()[1];
         return clazz;
