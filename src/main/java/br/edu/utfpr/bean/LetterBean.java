@@ -55,7 +55,7 @@ public class LetterBean {
         letter = new Letter();
         letterList = new ArrayList<>();
         service = new LetterService();
-
+        letterList = service.findAll();
     }
 
     public LetterBean(Letter letter) {
@@ -153,6 +153,10 @@ public class LetterBean {
 
         //limpa o formulário
         this.letter = new Letter();
+    }
+    
+    public List<Letter> findAll(){
+        return service.findAll();
     }
 
 }
