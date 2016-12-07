@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat-users xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+              version="1.0">
+
+    <role rolename="admin"/>
+    <role rolename="user"/>
+    
+    <user username="ronifabio" password="65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5" roles="user, admin" />
+    <user username="joao" password="65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5" roles="user" />
+    <user username="filipe" password="65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5" roles="admin" />
+</tomcat-users>

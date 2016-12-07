@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                template="./WEB-INF/admin-template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <!-- intro -->
+        <div class="utf-intro green darken-1 z-depth-1">
+            <h1 class="grey-text text-lighten-5">Natal dos Sonhos</h1>
+            <h:graphicImage library="img" name="utfpr.png" class="responsive-img utf-brand"/>
+        </div>
+        <!-- intro -->   
+        
+        <!-- aviso de vazio -->
+        <div class="row" jsf:rendered="#{!letterBean.hasElements()}">
+            <div class="col s12 center-align">
+                <i class="fa fa-5x fa-frown-o"></i>
+                <h5 class="utf-info">Não há cartas!</h5>
+            </div>
+        </div>
+        <!-- aviso de vazio -->
+        
+        <!-- cartas -->        
+        <div class="row" jsf:rendered="#{letterBean.hasElements()}">            
+            <ui:repeat var="item" value="#{letterBean.letterList}">
+                <div class="col s12 m4 l3">
+                    <div class="card">
+                        <span class="card-title">#{item.title}</span>
+                        <div class="card-image">
+                            <span class="card-title">#{item.title}</span>
+                            <h:graphicImage library="img" name="image.png"/>
+                        </div>
+                        <div class="card-content">
+                            <div class="progress">
+                                <div class="determinate" style="width: #{letterBean.letter.productItem.calculatePercentage()}%"></div>
+                            </div>
+                            <p>Apelino: #{letterBean.letter.child.name}</p>
+                            <p>Preço:
+                            <h:outputFormat value="#{letterBean.letter.productItem.price}" >
+                                <f:convertNumber type="currency" currencySymbol="R$"></f:convertNumber>
+                            </h:outputFormat>
+                            </p>
+                            <p>Arrecadado:
+                            <h:outputFormat value="#{letterBean.letter.productItem.raised}" >
+                                <f:convertNumber type="currency" currencySymbol="R$"></f:convertNumber>
+                            </h:outputFormat>
+                            </p>
+                        </div>
+                        <div class="card-action">
+                            <a href="letter-details.xhtml" class="green darken-5 waves-effect waves-light btn">CONTRIBUA</a>
+                       <!-- <p:commandLink action="letter-details.xhtml" class="green darken-5 waves-effect waves-light btn">CONTRIBUA</p:commandLink> -->                       
+                        </div>
+
+                    </div>                
+                </div>  
+            </ui:repeat>
+        </div>
+
+        <!-- cartas -->
+
+    </ui:define>
+
+</ui:composition>
