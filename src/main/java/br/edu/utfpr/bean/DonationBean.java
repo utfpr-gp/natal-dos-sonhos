@@ -147,4 +147,21 @@ public class DonationBean {
     public List<Donation> pendingPayment(){
         return  service.findAllPendingPayment();
     }
+    
+    public void updatePayment(Donation donation){
+        if(donation.getIsPayed()==false){
+            donation.setIsPayed(Boolean.TRUE);
+            service.update(donation);
+            MessageUtil.showMessage("Doação marcada como paga com sucesso", "", FacesMessage.SEVERITY_INFO);
+        
+            pendingPayment();
+        }
+        else{
+            donation.setIsPayed(Boolean.FALSE);
+            service.update(donation);
+            MessageUtil.showMessage("Doação marcada como não paga com sucesso", "", FacesMessage.SEVERITY_INFO);
+            
+            pendingPayment();
+        }
+    }
 }
