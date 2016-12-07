@@ -25,19 +25,49 @@ public class School {
     
     private String name;
     private String address;
-    private String professorName;
+    private String teacherName;
+    private Integer addressNumber;
+    private String neighborhood;
+    private String city;
+    
+  
+    public School(String name, String address, String teacherName, Integer addressNumber, String neighborhood, String city) {
+        this.name = name;
+        this.address = address;
+        this.teacherName = teacherName;
+        this.addressNumber = addressNumber;
+        this.neighborhood = neighborhood;
+        this.city = city;
+    }
+
+    public Integer getAddressNumber() {
+        return addressNumber;
+    }
+
+    public void setAddressNumber(Integer addressNumber) {
+        this.addressNumber = addressNumber;
+    }
+
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public School() {
     }
 
-    public School(String name, String address, String professorName) {
-        this.name = name;
-        this.address = address;
-        this.professorName = professorName;
-    }
     
-    
-
     public String getName() {
         return name;
     }
@@ -46,8 +76,8 @@ public class School {
         return address;
     }
 
-    public String getProfessorName() {
-        return professorName;
+    public String getteacherName() {
+        return teacherName;
     }
 
     public void setName(String name) {
@@ -58,8 +88,8 @@ public class School {
         this.address = address;
     }
 
-    public void setProfessorName(String professorName) {
-        this.professorName = professorName;
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 
     public Long getId() {
