@@ -2,6 +2,7 @@ package br.edu.utfpr.model.service;
 
 import java.util.List;
 import br.edu.utfpr.model.dao.AbstractDAO;
+import br.edu.utfpr.model.dao.DonationDAO;
 import br.edu.utfpr.util.JPAUtil;
 
 public class AbstractService<PK, T> {
@@ -88,8 +89,5 @@ public class AbstractService<PK, T> {
     public List<T> findAll() {
         return dao.findAll();
     }
-    
-    public List<T> findAllPendingPayment(){
-        return dao.findAllPendingPayment();
-    }
+
 }
