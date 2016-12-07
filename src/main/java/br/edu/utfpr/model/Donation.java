@@ -20,20 +20,21 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "donation")
 public class Donation {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String message;
-    
+    private Boolean isPayed = false;
+
     @ManyToOne
     private User user;
-    
+
     /**
-     * 
+     *
      * Valor doado
-     * 
+     *
      */
     private BigDecimal value;
 
@@ -59,7 +60,7 @@ public class Donation {
 
     public void setValue(BigDecimal value) {
         this.value = value;
-    }    
+    }
 
     public User getUser() {
         return user;
@@ -67,5 +68,14 @@ public class Donation {
 
     public void setUser(User user) {
         this.user = user;
-    }   
+    }
+
+    public Boolean getIsPayed() {
+        return isPayed;
+    }
+
+    public void setIsPayed(Boolean isPayed) {
+        this.isPayed = isPayed;
+    }
+
 }

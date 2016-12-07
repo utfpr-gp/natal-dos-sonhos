@@ -26,27 +26,29 @@ import javax.persistence.ManyToOne;
 @ManagedBean
 @ApplicationScoped
 public class DonationBean {
-    
+
     private Donation donation;
     private List<Donation> donationList;
+    private List<Donation> pendingDonationList;
     private DonationService service;
-    
+
     @ManyToOne
     private User user;
-    
+
     @ManyToOne
     private Letter letter;
-    
+
     public DonationBean() {
     }
-    
+
     @PostConstruct
     public void init() {
         donation = new Donation();
         donationList = new ArrayList<>();
+        pendingDonationList = new ArrayList<>();
         service = new DonationService();
     }
-    
+
     public DonationBean(Donation donation) {
         this.donation = donation;
     }
@@ -90,7 +92,7 @@ public class DonationBean {
     public void setLetter(Letter letter) {
         this.letter = letter;
     }
-    
+
     public void persist() {
 
         if (donation.getId() == null) {
@@ -98,7 +100,7 @@ public class DonationBean {
 
             if (isSucess) {
                 this.donationList.add(donation);
-                MessageUtil.showMessage("A doação foi cadastrada com sucesso!","", FacesMessage.SEVERITY_INFO);
+                MessageUtil.showMessage("A doação foi cadastrada com sucesso!", "", FacesMessage.SEVERITY_INFO);
             } else {
                 MessageUtil.showMessage("Ocorreu um erro ao realizar a doação", "", FacesMessage.SEVERITY_ERROR);
             }
@@ -111,22 +113,38 @@ public class DonationBean {
         //limpa o formulário
         this.donation = new Donation();
     }
-    
+
     public void edit(Donation donation) {
         this.donation = donation;
     }
-    
+
     public void delete(Donation donation) {
         service = new DonationService();
 
         if (service.delete(donation)) {
             if (this.donationList.remove(donation)) {
-                 MessageUtil.showMessage("Removido com sucesso", "", FacesMessage.SEVERITY_INFO);
-            }   
+                MessageUtil.showMessage("Removido com sucesso", "", FacesMessage.SEVERITY_INFO);
+            }
         } else {
             MessageUtil.showMessage("Falha ao remover", "", FacesMessage.SEVERITY_ERROR);
         }
         this.donation = new Donation();
     }
+
+    public List<Donation> findAll() {
+        return service.findAll();
+    }
+
+    public String isPayed(Donation donation){
+        if(donation.getIsPayed()==false){
+            return "Não está pago";
+        }
+        else{
+            return "Pago";
+        }
+    }
     
+    public List<Donation> pendingPayment(){
+        return  service.findAllPendingPayment();
+    }
 }

@@ -88,4 +88,8 @@ public class AbstractService<PK, T> {
     public List<T> findAll() {
         return dao.findAll();
     }
+    
+    public List<T> findAllPendingPayment(){
+        return dao.findAllPendingPayment();
+    }
 }

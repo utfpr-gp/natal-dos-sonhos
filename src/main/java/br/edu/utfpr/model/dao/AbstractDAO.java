@@ -67,12 +67,18 @@ public class AbstractDAO<PK, T> {
     public void delete(T entity) {
         this.entityManager = JPAUtil.getEntityManager();
         //verifica se a entidade está gerenciada, se não estiver, recupera ela do BD
-        entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));         
+        entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
     }
 
     public List<T> findAll() {
         this.entityManager = JPAUtil.getEntityManager();
         return entityManager.createQuery(("FROM " + getTypeClass().getName()))
+                .getResultList();
+    }
+
+    public List<T> findAllPendingPayment() {
+        this.entityManager = JPAUtil.getEntityManager();
+        return entityManager.createQuery(("FROM " + getTypeClass().getName() + " WHERE isPayed = false"))
                 .getResultList();
     }
 
