@@ -28,7 +28,7 @@
             <property name="hibernate.hbm2ddl.auto" value="update"/>		  
             
             <!-- javax.persistence.schema-generation.database.action : for database action, values are "none", "create", "drop-and-create", "drop". -->
-            <property name="javax.persistence.schema-generation.database.action" value="none"/>
+            <!--<property name="javax.persistence.schema-generation.database.action" value="none"/>-->
             
 		  		
         </properties>

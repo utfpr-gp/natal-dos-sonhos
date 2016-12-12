@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/natal-dos-sonhos"/>
-
+<Context path="/natal-dos-sonhos">
+<!--
 <Realm  className="org.apache.catalina.realm.JDBCRealm"
           driverName="com.mysql.jdbc.Driver"
           connectionURL="jdbc:mysql://localhost:3306/natal_dos_sonhos"
@@ -8,4 +8,5 @@
           connectionPassword="mysql"
           userTable="user" userNameCol="login" userCredCol="password"
           userRoleTable="roles" roleNameCol="role" />
+          -->
 </Context>
