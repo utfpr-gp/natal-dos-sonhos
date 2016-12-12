@@ -16,7 +16,7 @@ import java.util.List;
  */
 @ManagedBean
 @SessionScoped
-public class SchoolBean implements Serializable{
+public class SchoolBean {
     private List<School> schoolList;
     private School school;
     private SchoolService schoolService;

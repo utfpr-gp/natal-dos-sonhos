@@ -158,5 +158,9 @@ public class LetterBean {
     public List<Letter> findAll(){
         return letterList = service.findAll();
     }
-
+    
+    public String doAction(Letter letter){
+        this.letter = letter;
+        return "letter-details";
+    }
 }
