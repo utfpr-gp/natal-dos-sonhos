@@ -7,7 +7,7 @@
                 xmlns:jsf="http://xmlns.jcp.org/jsf"                
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
-                    
+
     <ui:define name="content">
         <p:messages></p:messages>
         <br></br>
@@ -30,26 +30,29 @@
                                 <p:graphicImage url="https://inomics.com/sites/default/files/pictures/picture-95970-1460131169.png" width="110px" height="110px" />
                                 <br></br>
                                 Nome: Jaiminho
-                               <!--> <h:outputText value="#/*{letterBean.letter.child.name}" /> -->
+                                <!--> <h:outputText value="#/*{letterBean.letter.child.name}" /> -->
                                 <br></br>
                                 Idade: 12
-                               <!-- <h:outputText value="#/*{letterBean.letter.child.age} anos" /> -->
+                                <!-- <h:outputText value="#/*{letterBean.letter.child.age} anos" /> -->
                             </center>
                         </div>
 
                         <div class="ui-g-12 ui-md-5"> 
                             <center>
-                                <strong><h:outputText value="Onde estudo?" /></strong>     
+                                <strong>
+                                    <h:outputText value="Onde estudo?" />
+                                </strong>     
                                 <br></br><br></br>
-                                <h:outputText value="Colégio tal tal tal#{schoolBean.school.name}" /> 
+                                <h:outputText value="Colégio tal tal tal#{letterBean.letter.child.school.name}" /> 
                                 <br></br>
-                                <h:outputText value="Professora responsavel: Dolores Tal Dolores#{schoolBean.school.teacherName}" /> 
+                                <h:outputText value="Professora responsavel: Dolores Tal Dolores#{letterBean.letter.child.school.teacherName}" /> 
                                 <br></br>
-                                <h:outputText value="Endereço: Rua X tal tal n 89#{schoolBean.school.Address}" /> 
+                                <h:outputText value="Endereço: Rua X tal tal n 89#{letterBean.letter.child.school.address}" /> 
+                                <h:outputText value="Endereço: #{letterBean.letter.child.school.addressNumber}" /> 
                                 <br></br>
-                                <h:outputText value="Bairro: Industrial#{schoolBean.school.neighborhood}" /> 
+                                <h:outputText value="Bairro: Industrial#{letterBean.letter.child.school.neighborhood}" /> 
                                 <br></br>
-                                <h:outputText value="Cidade: Guarapuava#{schoolBean.school.city}" />
+                                <h:outputText value="Cidade: Guarapuava#{letterBean.letter.child.school.city}" />
                             </center>
                         </div>
                         <div class="ui-g-12 ui-md-4">     
@@ -63,7 +66,8 @@
                     <div class="ui-g">
                         <div class="ui-g-12 ui-md-12">     
                             <center>
-                                <h5><h:outputText value="Meu sonho" /></h5></center>
+                                <h5><h:outputText value="Meu sonho" /></h5>
+                            </center>
                             <center>      
                                 <p:graphicImage url="http://g04.a.alicdn.com/kf/HTB1qbsHHFXXXXbiXVXXq6xXFXXXS/Dragon-ball-z-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%8D%D1%82%D0%BA%D0%B8-%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%BA%D0%B8-%D0%B2%D0%B5%D0%B3%D0%B5%D1%82%D0%B0-%D0%B3%D0%BE%D0%BA%D1%83-%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%BA%D1%83-dbz-%D0%BF%D0%B8%D0%BA%D0%BA%D0%BE%D0%BB%D0%BE-banpresto-%D0%B4%D1%80%D0%B0%D0%BA%D0%BE%D0%BD%D0%B8%D0%B9-%D0%B6%D0%B5%D0%BC%D1%87%D1%83%D0%B3-bonecos-%D0%B4%D0%B6%D0%BE%D0%BA%D0%B5%D1%80-%D1%81%D1%83%D0%BF%D0%B5%D1%80%D0%B3%D0%B5%D1%80%D0%BE%D0%B9.jpg" width="380px" height="380px" />
                                 <br></br><br></br>
@@ -73,9 +77,9 @@
                                 <p:progressBar value="59" labelTemplate="{value}%" displayOnly="true" id="progressBarClient" widgetVar="pbClient" style="width:400px"/>
                                 <br></br>
                                 <h:form>
-                                <div class="row">
-                                    <h:commandLink  action="#{letterBean.letter.donations}" class="green darken-5 waves-effect waves-light btn" value="Contribua"></h:commandLink>
-                                </div> 
+                                    <div class="row">
+                                        <h:commandLink  action="#{letterBean.letter.makeDonation}" class="green darken-5 waves-effect waves-light btn" value="Contribua"></h:commandLink>
+                                    </div> 
                                 </h:form>
                                 <!--<p:button  value="Contribua" icon="fa fa-dollar">
                                     <f:param name="productId" value="10" />
@@ -99,8 +103,11 @@
                     <br></br><br></br>
                     <hr></hr>
                     <div class="ui-g">
-                        <div class="ui-g-12 ui-md-12">     <center><h5><h:outputText value="Contribuintes" /></h5></center>
-                            <!-- <p:dataTable var="user" value="#/*{userBean.userList}"  reflow="true" paginator="true" rows="5">-->
+                        <div class="ui-g-12 ui-md-12">     
+                            <center>
+                                <h5><h:outputText value="Contribuintes" /></h5>
+                            </center>
+                            <!-- <p:dataTable var="user" value="#//{letterBean.letter.donationsList}"  reflow="true" paginator="true" rows="5">-->
                             <p:dataTable var="user" value="" reflow="true" paginator="true" rows="5">
                                 <p:column headerText="Contribuinte">
                                     <p:graphicImage url="https://inomics.com/sites/default/files/pictures/picture-95970-1460131169.png" width="70px" height="70px" />
